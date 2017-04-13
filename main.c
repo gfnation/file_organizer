@@ -19,6 +19,9 @@ int main(int argc, char* argv[])
     exit(1);
   }
 
+  char string[] = "string.tct";
+  char* exten = findExtension(string);
+  printf("%s\n", exten);
 }
 
 void createFolder(char* folderName)
