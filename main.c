@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+
+void createFolder(char* folderName);
+char* findExtension(char* fileName);
+
+int main(int argc, char* argv[])
+{
+
+  if (argc >2)
+  {
+    fprintf(stderr, "The argument count is not correct.\n");
+    exit(1);
+  }
+
+}
+
+void createFolder(char* folderName)
+{
+
+
+}
+
+char* findExtension(char* fileName)
+{
+  char* extension;
+
+  int loop = strlen(fileName);
+
+  unsigned char count =0;
+  while(!fileName[loop] != '.')
+  {
+    count++;
+    loop--;
+  }
+
+  extension = malloc(count * sizeof(char));
+
+  int index =0;
+  while(index != count)
+  {
+    extension[index++] = fileName[loop++];
+  }
+  return extension;
+}
