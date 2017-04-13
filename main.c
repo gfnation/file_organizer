@@ -41,6 +41,7 @@ char* findExtension(char* fileName)
   {
     count++;
     loop--;
+    printf("%d %d\n", loop, count);
   }
 
   extension = malloc(count * sizeof(char));
@@ -48,7 +49,10 @@ char* findExtension(char* fileName)
   int index =0;
   while(index != count)
   {
-    extension[index++] = fileName[loop++];
+    extension[index] = fileName[loop];
+    index++;
+    loop++;
+    printf("%d %d\n", loop, index);
   }
   return extension;
 }
