@@ -37,7 +37,7 @@ char* findExtension(char* fileName)
   int loop = strlen(fileName);
 
   unsigned char count =0;
-  while(!fileName[loop] != '.')
+  while(fileName[loop] != '.')
   {
     count++;
     loop--;
