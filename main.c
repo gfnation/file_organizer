@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 
   int current_dir = chdir(".");
   //change directory to specified directory if needed
-  if(argc == 1)
+  if(argc == 2)
   {
 
     if (current_dir = chdir(argv[1]) == -1)
