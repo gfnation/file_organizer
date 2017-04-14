@@ -7,7 +7,6 @@
 #include <fcntl.h>
 
 
-void createFolder(char* folderName);
 char* findExtension(char* fileName);
 
 int main(int argc, char* argv[])
@@ -19,16 +18,23 @@ int main(int argc, char* argv[])
     exit(1);
   }
 
-  char string[] = "string.tct";
-  char* exten = findExtension(string);
-  printf("%s\n", exten);
+  int current_dir = chdir(".");
+  //change directory to specified directory if needed
+  if(argc == 1)
+  {
+
+    if (current_dir = chdir(argv[1]) == -1)
+    {
+      fprintf(stderr, "%s\n", "The path file could not be found.\n");
+      exit(1);
+    }
+  }
+
+
 }
 
-void createFolder(char* folderName)
-{
 
 
-}
 
 char* findExtension(char* fileName)
 {
@@ -41,7 +47,6 @@ char* findExtension(char* fileName)
   {
     count++;
     loop--;
-    printf("%d %d\n", loop, count);
   }
 
   extension = malloc(count * sizeof(char));
@@ -52,7 +57,6 @@ char* findExtension(char* fileName)
     extension[index] = fileName[loop];
     index++;
     loop++;
-    printf("%d %d\n", loop, index);
   }
   return extension;
 }
