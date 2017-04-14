@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
   mkdir("./movies", 0744);
   mkdir("./shows", 0744);
   mkdir("./documents", 0744);
-  mkdir("./picures", 0744);
+  mkdir("./pictures", 0744);
   mkdir("./other", 0744);
 
 }
