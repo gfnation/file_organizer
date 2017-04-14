@@ -30,9 +30,10 @@ int main(int argc, char* argv[])
     }
   }
 
+  //Make all directory
+  mkdir("./Music", 0744);
 
 }
-
 
 
 
