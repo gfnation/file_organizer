@@ -7,7 +7,9 @@
 #include <fcntl.h>
 
 
+
 char* findExtension(char* fileName);
+void organize(DIR* dir);
 
 int main(int argc, char* argv[])
 {
@@ -38,6 +40,9 @@ int main(int argc, char* argv[])
   mkdir("./pictures", 0744);
   mkdir("./other", 0744);
 
+  DIR* dir = opendir(".");
+  organize(dir);
+
 }
 
 
@@ -65,4 +70,13 @@ char* findExtension(char* fileName)
     loop++;
   }
   return extension;
+}
+
+void organize(DIR* dir)
+{
+  struct dirent* read;
+  while(read !=NULL)
+  {
+    if(strcmp(findExtension(read.d_name), "")
+  }
 }
