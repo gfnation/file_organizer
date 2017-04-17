@@ -120,19 +120,20 @@ void organize(DIR *dir)
 void  otherOrg(char *fileName)
 {
   int ofile, nfile, nread, nwrite;
+  struct stat statbuf;
+
+  if(stat(fileName, &statbuf) == -1)
+  {
+    fprintf(stderr, "%s\n", "Could not get stat on file");
+    exit(1);
+  }
 
   chdir("./other");
   char *oldFile = malloc(strlen(fileName)+4);
   strcpy(oldFile, "../");
   strcat(oldFile, fileName);
 
-  struct stat *statbuf;
 
-  if(stat(oldFile, statbuf) == -1)
-  {
-    fprintf(stderr, "%s\n", "Could not get stat on file");
-    exit(1);
-  }
 
   int buf_size = statbuf->st_size;
   char buffer[buf_size];
