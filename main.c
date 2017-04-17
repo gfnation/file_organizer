@@ -118,5 +118,5 @@ void otherOrganize(char* fileName)
   chdir("./other");
   FILE *fp;
   fp = fopen(newFile, "w");
-  link(("../"+fileName), newFile);
+  link(fileName, newFile);
 }
