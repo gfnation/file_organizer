@@ -156,6 +156,12 @@ void  otherOrg(char *fileName)
 
   close(nfile); close(ofile);
 
+  if(unlink(oldFile) == -1)
+  {
+    fprintf(stderr, "%s\n", "File removal failure");
+    exit(1);
+  }
+
   chdir("..");
 
 }
