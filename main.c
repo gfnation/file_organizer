@@ -86,6 +86,7 @@ void organize(DIR *dir)
   while((dir_pt = readdir(dir)) !=NULL)
   {
 
+    printf("%s\n",dir_pt->d_name );
     if(strcmp(findExtension(dir_pt->d_name), VIDEO))
     {
 
@@ -107,7 +108,7 @@ void organize(DIR *dir)
     else
     {
       //TODO: handle all other cases
-      printf("%s\n",dir_pt->d_name );
+
       otherOrg(dir, dir_pt->d_name);
     }
   }
