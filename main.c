@@ -112,7 +112,7 @@ void organize(DIR *dir)
       else
       {
         //TODO: handle all other cases
-        otherOrg(dir, dir_pt->d_name);
+        otherOrg(dir_pt->d_name);
       }
     }
   }
