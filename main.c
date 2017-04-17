@@ -124,7 +124,7 @@ void  otherOrg(DIR *curr, char *fileName)
   strcpy(oldFile, "../");
   strcat(oldFile, fileName);
 
-  printf("%s\n", oldFile);
+  link(oldFile, fileName);
 }
 
 
