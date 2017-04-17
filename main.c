@@ -112,5 +112,5 @@ void organize(DIR *dir)
 }
 
 void  otherOrg(DIR *curr, char *fileName) {
-  /*
+  
 }
