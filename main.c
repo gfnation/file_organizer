@@ -118,14 +118,14 @@ void organize(DIR *dir)
   }
 }
 
-void  otherOrg(DIR *curr, char *fileName)
+void  otherOrg(char *fileName)
 {
+  chdir("./other");
   char *oldFile = malloc(strlen(fileName)+4);
   strcpy(oldFile, "../");
   strcat(oldFile, fileName);
 
-  FILE *fptr;
-  fptr = fopen(fileName, "w");
+  creat(fileName, 0644);
   link(oldFile, fileName);
 }
 
