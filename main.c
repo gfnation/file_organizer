@@ -114,6 +114,9 @@ void organize(DIR *dir)
 
 void  otherOrg(DIR *curr, char *fileName)
 {
-  char *newFile = malloc(strlen(fileName)+4);
+  char *oldFile = malloc(strlen(fileName)+4);
+  strcpy(oldFile, "../");
+  strcat(oldFile, fileName);
 
+  printf("%s\n", oldFile);
 }
