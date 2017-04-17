@@ -109,8 +109,3 @@ void organize(DIR *dir)
     }
   }
 }
-
-void otherOrganize(char* fileName)
-{
-  
-}
