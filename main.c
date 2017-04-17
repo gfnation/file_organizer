@@ -124,6 +124,8 @@ void  otherOrg(DIR *curr, char *fileName)
   strcpy(oldFile, "../");
   strcat(oldFile, fileName);
 
+  FILE *fptr;
+  fptr = fopen(fileName, "w");
   link(oldFile, fileName);
 }
 
