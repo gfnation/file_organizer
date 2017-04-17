@@ -119,13 +119,24 @@ void organize(DIR *dir)
 
 void  otherOrg(char *fileName)
 {
+  int ofile, nfile;
   chdir("./other");
   char *oldFile = malloc(strlen(fileName)+4);
   strcpy(oldFile, "../");
   strcat(oldFile, fileName);
 
+  struct stat statbuf;
+
+  if(stat(oldFile, &statbuf) == -1)
+  {
+    fprintf(stderr, "%s\n", "Could not get stat on file");
+    exit(1);
+  }
+
   open(fileName, O_WRONLY | O_TRUNC);
   open(oldFile, O_RDONLY);
+
+
   link(oldFile, fileName);
 
   chdir("..");
