@@ -128,7 +128,7 @@ void  otherOrg(char *fileName)
 
   struct stat *statbuf;
 
-  if(stat(oldFile, &statbuf) == -1)
+  if(stat(oldFile, statbuf) == -1)
   {
     fprintf(stderr, "%s\n", "Could not get stat on file");
     exit(1);
