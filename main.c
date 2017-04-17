@@ -60,7 +60,7 @@ char* findExtension(char* fileName)
   int loop = strlen(fileName);
 
   unsigned char count =0;
-  while(fileName[loop] != '.')
+  while(fileName[loop] != '.' || count == strlen(fileName))
   {
     count++;
     loop--;
@@ -87,7 +87,7 @@ void organize(DIR *dir)
 
     if(strcmp(findExtension(dir_pt->d_name), VIDEO))
     {
-      //chdir("movies");
+
 
     }
     else if(strcmp(findExtension(dir_pt->d_name), MUSIC))
@@ -108,4 +108,15 @@ void organize(DIR *dir)
       //TODO: handle all other cases
     }
   }
+}
+
+void otherOrganize(char* fileName)
+{
+  char* newFile;
+  newFile = malloc(strlen(fileName) * sizeof(char));
+  strcpy(newFile, fileName);
+  chdir("./other");
+  FILE *fp;
+  fp = fopen(newFile, "w");
+  link(("../"+fileName), newFile);
 }
