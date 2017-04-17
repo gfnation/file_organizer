@@ -113,7 +113,7 @@ void organize(DIR *dir)
 void otherOrganize(char* fileName)
 {
   char* newFile;
-  newFile = malloc(strlen(fileName) * sizeof(char));
+  newFile = malloc((strlen(fileName) * sizeof(char))+1);
   strcpy(newFile, fileName);
   chdir("./other");
   FILE *fp;
