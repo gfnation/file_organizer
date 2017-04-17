@@ -126,7 +126,7 @@ void  otherOrg(char *fileName)
   strcpy(oldFile, "../");
   strcat(oldFile, fileName);
 
-  struct stat statbuf;
+  struct stat *statbuf;
 
   if(stat(oldFile, &statbuf) == -1)
   {
