@@ -135,7 +135,7 @@ void  otherOrg(char *fileName)
 
 
 
-  int buf_size = statbuf->st_size;
+  int buf_size = statbuf.st_size;
   char buffer[buf_size];
 
   if((nfile = open(fileName, O_WRONLY | O_TRUNC)) ==-1)
