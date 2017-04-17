@@ -107,6 +107,7 @@ void organize(DIR *dir)
     else
     {
       //TODO: handle all other cases
+      printf("%s\n",dir_pt->d_name );
       otherOrg(dir, dir_pt->d_name);
     }
   }
