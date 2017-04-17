@@ -119,7 +119,8 @@ void organize(DIR *dir)
 
 void  otherOrg(char *fileName)
 {
-  int ofile, nfile;
+  int ofile, nfile, nread, nwrite;
+
   chdir("./other");
   char *oldFile = malloc(strlen(fileName)+4);
   strcpy(oldFile, "../");
@@ -133,11 +134,26 @@ void  otherOrg(char *fileName)
     exit(1);
   }
 
-  open(fileName, O_WRONLY | O_TRUNC);
-  open(oldFile, O_RDONLY);
+  int buf_size = statbuf->st_size;
+  char buffer[buf_size];
 
+  if((nfile = open(fileName, O_WRONLY | O_TRUNC)) ==-1)
+  {
+    fprintf(stderr, "%s\n", "Couldn't open the new file");
+    exit(1);
+  }
+  if((ofile = open(oldFile, O_RDONLY)) == -1)
+  {
+    fprintf(stderr, "%s\n", "The old file couldn't be opened");
+    exit(1);
+  }
 
-  link(oldFile, fileName);
+  while ((nread = read(ofile, buffer, buf_size)) > 0)
+  {
+    nwrite = write(nfile, buffer, buf_size);
+  }
+
+  close(nfile); close(ofile);
 
   chdir("..");
 
