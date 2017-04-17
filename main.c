@@ -90,7 +90,6 @@ void organize(DIR *dir)
 
     if(ignore(dir_pt->d_name)==0)
     {
-        printf("%s\n",dir_pt->d_name );
       if(strcmp(findExtension(dir_pt->d_name), VIDEO) == 0)
       {
 
@@ -125,8 +124,12 @@ void  otherOrg(char *fileName)
   strcpy(oldFile, "../");
   strcat(oldFile, fileName);
 
-  creat(fileName, 0644);
+  open(fileName, O_WRONLY | O_TRUNC);
+  open(oldFile, O_RDONLY);
   link(oldFile, fileName);
+
+  chdir("..");
+
 }
 
 
