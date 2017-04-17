@@ -74,7 +74,7 @@ char* findExtension(char* fileName)
 
 void organize(DIR *dir)
 {
-  struct dirent* read;
+  typedef struct dirent* read;
   while(read !=NULL)
   {
     if(strcmp(findExtension(read.d_name), ".mpk" && (read.d_name[0] == '1' || read.d_name[0] == '2'))
