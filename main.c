@@ -107,10 +107,13 @@ void organize(DIR *dir)
     else
     {
       //TODO: handle all other cases
+      otherOrg(dir, dir_pt->d_name);
     }
   }
 }
 
-void  otherOrg(DIR *curr, char *fileName) {
-  
+void  otherOrg(DIR *curr, char *fileName)
+{
+  char newFile* = malloc(strlen(fileName)+4);
+   
 }
