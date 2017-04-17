@@ -17,6 +17,7 @@
 char* findExtension(char* fileName);
 void organize(DIR* dir);
 void  otherOrg(DIR *curr, char *fileName);
+int ignore(char* name);
 
 int main(int argc, char* argv[])
 {
@@ -87,29 +88,31 @@ void organize(DIR *dir)
   {
 
     printf("%s\n",dir_pt->d_name );
-    if(strcmp(findExtension(dir_pt->d_name), VIDEO))
+    if(ignore(dir_pt->d_name)==0)
     {
+      if(strcmp(findExtension(dir_pt->d_name), VIDEO) == 0)
+      {
 
 
-    }
-    else if(strcmp(findExtension(dir_pt->d_name), MUSIC))
-    {
-      //TODO: add music caller here
-    }
-    else if(strcmp(findExtension(dir_pt->d_name), DOC) || strcmp(findExtension(dir_pt->d_name), TEXT))
-    {
-      //TODO: handle documents
+      }
+      else if(strcmp(findExtension(dir_pt->d_name), MUSIC) == 0)
+      {
+        //TODO: add music caller here
+      }
+      else if(strcmp(findExtension(dir_pt->d_name), DOC) == 0 || strcmp(findExtension(dir_pt->d_name), TEXT) == 0)
+      {
+        //TODO: handle documents
 
-    }
-    else if(strcmp(findExtension(dir_pt->d_name),JPEG) || strcmp(findExtension(dir_pt->d_name), PNG))
-    {
-      //TODO: handle pictures
-    }
-    else
-    {
-      //TODO: handle all other cases
-
-      otherOrg(dir, dir_pt->d_name);
+      }
+      else if(strcmp(findExtension(dir_pt->d_name),JPEG) == 0 || strcmp(findExtension(dir_pt->d_name), PNG) == 0)
+      {
+        //TODO: handle pictures
+      }
+      else
+      {
+        //TODO: handle all other cases
+        otherOrg(dir, dir_pt->d_name);
+      }
     }
   }
 }
@@ -121,4 +124,28 @@ void  otherOrg(DIR *curr, char *fileName)
   strcat(oldFile, fileName);
 
   printf("%s\n", oldFile);
+}
+
+
+int ignore(char* name)
+{
+  //ignore current and past directories
+  if(strcmp(name, ".") == 0 || strcmp(name, "..") ==0)
+  {
+    return 1;
+  }
+  //ignore folders I made
+  else if(strcmp(name, "music") == 0 || strcmp(name, "movies") == 0 || strcmp(name, "shows") == 0 || strcmp(name, "documents")==0 || strcmp(name, "other")==0 || strcmp(name, "pictures"))
+  {
+    return 1;
+  }
+  //ignore headers and c files and executables
+  else if(strcmp(findExtension(name), ".c") ==0 || strcmp(findExtension(name), ".h") ==0 || strcmp(name, "organizer") ==0)
+  {
+    return 1;
+  }
+  else
+  {
+    return 0;
+  }
 }
