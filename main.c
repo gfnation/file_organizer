@@ -7,6 +7,12 @@
 #include <fcntl.h>
 #include <dirent.h>
 
+#define VIDEO ".mkv"
+#define MUSIC ".mp3"
+#define DOC ".docx"
+#define TEXT ".txt"
+#define JPEG ".jpg"
+#define PNG ".png"
 
 char* findExtension(char* fileName);
 void organize(DIR* dir);
@@ -78,10 +84,28 @@ void organize(DIR *dir)
 
   while((dir_pt = readdir(dir)) !=NULL)
   {
-    if(strcmp(findExtension(dir_pt->d_name), ".mpk") && (dir_pt->d_name[0] == '1' || dir_pt->d_name[0] == '2'))
+
+    if(strcmp(findExtension(dir_pt->d_name), VIDEO))
     {
       //chdir("movies");
 
+    }
+    else if(strcmp(findExtension(dir_pt->d_name), MUSIC))
+    {
+      //TODO: add music caller here
+    }
+    else if(strcmp(findExtension(dir_pt->d_name), DOC) || strcmp(findExtension(dir_pt->d_name), TEXT))
+    {
+      //TODO: handle documents
+
+    }
+    else if(strcmp(findExtension(dir_pt->d_name),JPEG) || strcmp(findExtension(dir_pt->d_name), PNG))
+    {
+      //TODO: handle pictures
+    }
+    else
+    {
+      //TODO: handle all other cases
     }
   }
 }
