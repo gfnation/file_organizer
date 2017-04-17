@@ -114,6 +114,6 @@ void organize(DIR *dir)
 
 void  otherOrg(DIR *curr, char *fileName)
 {
-  char newFile* = malloc(strlen(fileName)+4);
-   
+  char *newFile = malloc(strlen(fileName)+4);
+
 }
