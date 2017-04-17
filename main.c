@@ -16,6 +16,7 @@
 
 char* findExtension(char* fileName);
 void organize(DIR* dir);
+void  otherOrg(DIR *curr, char *fileName);
 
 int main(int argc, char* argv[])
 {
@@ -108,4 +109,8 @@ void organize(DIR *dir)
       //TODO: handle all other cases
     }
   }
+}
+
+void  otherOrg(DIR *curr, char *fileName) {
+  /*
 }
