@@ -87,9 +87,10 @@ void organize(DIR *dir)
   while((dir_pt = readdir(dir)) !=NULL)
   {
 
-    printf("%s\n",dir_pt->d_name );
+
     if(ignore(dir_pt->d_name)==0)
     {
+        printf("%s\n",dir_pt->d_name );
       if(strcmp(findExtension(dir_pt->d_name), VIDEO) == 0)
       {
 
@@ -135,7 +136,7 @@ int ignore(char* name)
     return 1;
   }
   //ignore folders I made
-  else if(strcmp(name, "music") == 0 || strcmp(name, "movies") == 0 || strcmp(name, "shows") == 0 || strcmp(name, "documents")==0 || strcmp(name, "other")==0 || strcmp(name, "pictures"))
+  else if(strcmp(name, "music") == 0 || strcmp(name, "movies") == 0 || strcmp(name, "shows") == 0 || strcmp(name, "documents")==0 || strcmp(name, "other")==0 || strcmp(name, "pictures") ==0)
   {
     return 1;
   }
