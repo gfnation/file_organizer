@@ -16,7 +16,7 @@
 
 char* findExtension(char* fileName);
 void organize(DIR* dir);
-void  otherOrg(DIR *curr, char *fileName);
+void  otherOrg(char *fileName);
 int ignore(char* name);
 
 int main(int argc, char* argv[])
