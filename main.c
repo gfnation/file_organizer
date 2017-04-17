@@ -78,7 +78,7 @@ void organize(DIR *dir)
 
   while((dir_pt = readdir(dir)) !=NULL)
   {
-    if(strcmp(findExtension(dir_pt->d_name), ".mpk") && (dir_pt.d_name[0] == '1' || dir_pt.d_name[0] == '2'))
+    if(strcmp(findExtension(dir_pt->d_name), ".mpk") && (dir_pt->d_name[0] == '1' || dir_pt->d_name[0] == '2'))
     {
       //chdir("movies");
 
