@@ -170,7 +170,7 @@ void  otherOrg(char *fileName)
 int ignore(char* name)
 {
   //ignore current and past directories
-  if(strcmp(name, ".") == 0 || strcmp(name, "..") ==0)
+  if(strcmp(name, ".") == 0 || strcmp(name, "..") ==0 || strcmp(name, "core") == 0)
   {
     return 1;
   }
