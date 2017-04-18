@@ -122,7 +122,7 @@ void organize(DIR *dir)
 
 void  easyOrg(char *fileName, char* fileExt)
 {
-  printf("%s %s\n", fileExt, PNG);
+  printf("%s %s %d\n", fileExt, PNG, strcmp);
   int ofile, nfile, nread, nwrite;
   struct stat statbuf;
 
