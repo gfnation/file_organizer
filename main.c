@@ -149,8 +149,8 @@ void  easyOrg(char *fileName, char* fileExt)
 
 
 
-  int buf_size = statbuf.st_size;
-  char buffer[buf_size];
+//  int buf_size = statbuf.st_size;
+//  char buffer[buf_size];
 
   if((nfile = open(fileName, O_RDWR | O_CREAT, 0644)) ==-1)
   {
