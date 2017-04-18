@@ -149,7 +149,7 @@ void  easyOrg(char *fileName, char* fileExt)
   strcpy(oldFile, "../");
   strcat(oldFile, fileName);
 
-  printf("%s\n", test );
+  printf("%s\n", "test" );
 
   int buf_size = statbuf.st_size;
   char buffer[buf_size];
