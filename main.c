@@ -123,14 +123,14 @@ void organize(DIR *dir)
 void  easyOrg(char *fileName, char* fileExt)
 {
   int ofile, nfile, nread, nwrite;
-//  struct stat statbuf;
-/*
+  struct stat statbuf;
+
   if(stat(fileName, &statbuf) == -1)
   {
     fprintf(stderr, "%s\n", "Could not get stat on file");
     exit(1);
   }
-*/
+
   if(strcmp(fileExt, PNG) ==0 || strcmp(fileExt, JPEG) ==0)
   {
     chdir("./pictures");
@@ -149,15 +149,15 @@ void  easyOrg(char *fileName, char* fileExt)
 
 
 
-//  int buf_size = statbuf.st_size;
-//  char buffer[buf_size];
+  int buf_size = statbuf.st_size;
+  char buffer[buf_size];
 
   if((nfile = creat(fileName, 0644)) ==-1)
   {
     fprintf(stderr, "%s\n", "Couldn't open the new file");
     exit(1);
   }
-  /*
+
   if((ofile = open(oldFile, O_RDWR, 0644)) == -1)
   {
     fprintf(stderr, "%s\n", "The old file couldn't be opened");
@@ -170,7 +170,7 @@ void  easyOrg(char *fileName, char* fileExt)
   }
 
   close(nfile); close(ofile);
-*/
+
   link(oldFile, fileName);
 
   chdir("..");
