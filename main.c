@@ -77,7 +77,7 @@ char* findExtension(char* fileName)
     index++;
     loop++;
   }
-  extension[count] = '/0';
+  extension[count] = '\0';
   return extension;
 }
 
