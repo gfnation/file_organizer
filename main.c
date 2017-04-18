@@ -7,12 +7,12 @@
 #include <fcntl.h>
 #include <dirent.h>
 
-#define VIDEO ".mkv\0"
-#define MUSIC ".mp3\0"
-#define DOC ".docx\0"
-#define TEXT ".txt\0"
-#define JPEG ".jpg\0"
-#define PNG ".png\0"
+#define VIDEO ".mkv"
+#define MUSIC ".mp3"
+#define DOC ".docx"
+#define TEXT ".txt"
+#define JPEG ".jpg"
+#define PNG ".png"
 
 char* findExtension(char* fileName);
 void organize(DIR* dir);
