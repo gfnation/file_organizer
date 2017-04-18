@@ -16,7 +16,7 @@
 
 char* findExtension(char* fileName);
 void organize(DIR* dir);
-void  otherOrg(char *fileName);
+void  easyOrg(char *fileName, char* fileExt);
 int ignore(char* name);
 
 int main(int argc, char* argv[])
@@ -41,12 +41,12 @@ int main(int argc, char* argv[])
   }
 
   //Make all directory
-  mkdir("./music", 0744);
-  mkdir("./movies", 0744);
-  mkdir("./shows", 0744);
-  mkdir("./documents", 0744);
-  mkdir("./pictures", 0744);
-  mkdir("./other", 0744);
+  mkdir("./music", 0644);
+  mkdir("./movies", 0644);
+  mkdir("./shows", 0644);
+  mkdir("./documents", 0644);
+  mkdir("./pictures", 0644);
+  mkdir("./other", 0644);
 
   DIR *dir = opendir(".");
   organize(dir);
@@ -102,22 +102,24 @@ void organize(DIR *dir)
       else if(strcmp(findExtension(dir_pt->d_name), DOC) == 0 || strcmp(findExtension(dir_pt->d_name), TEXT) == 0)
       {
         //TODO: handle documents
+        easyOrg(dir_pt->d_name, findExtension(dir_pt->d_name));
 
       }
       else if(strcmp(findExtension(dir_pt->d_name),JPEG) == 0 || strcmp(findExtension(dir_pt->d_name), PNG) == 0)
       {
         //TODO: handle pictures
+        easyOrg(dir_pt->d_name, findExtension(dir_pt->d_name));
       }
       else
       {
         //TODO: handle all other cases
-        otherOrg(dir_pt->d_name);
+        easyOrg(dir_pt->d_name, findExtension(dir_pt->d_name));
       }
     }
   }
 }
 
-void  otherOrg(char *fileName)
+void  easyOrg(char *fileName, char* fileExt)
 {
   int ofile, nfile, nread, nwrite;
   struct stat statbuf;
@@ -128,7 +130,18 @@ void  otherOrg(char *fileName)
     exit(1);
   }
 
-  chdir("./other");
+  if(fileExt == PNG || fileExt == JPEG)
+  {
+    chdir("./pictures");
+  }
+  else if (fileExt == DOC || fileExt == TEXT)
+  {
+    chdir("./documents");
+  }
+  else
+  {
+    chdir("./other");
+  }
   char *oldFile = malloc(strlen(fileName)+4);
   strcpy(oldFile, "../");
   strcat(oldFile, fileName);
