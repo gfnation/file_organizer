@@ -125,7 +125,7 @@ void  easyOrg(char *fileName, char* fileExt)
   int ofile, nfile, nread, nwrite;
   struct stat statbuf;
 
-
+/*
   if(stat(fileName, &statbuf) == -1)
   {
     fprintf(stderr, "%s\n", "Could not get stat on file");
@@ -140,16 +140,16 @@ void  easyOrg(char *fileName, char* fileExt)
   else if (strcmp(fileExt, DOC) ==0 || strcmp(fileExt, TEXT) ==0)
   {
     chdir("./documents");
-  }
-  else
-  {
-    chdir("./other");
-  }
+  }*/
+  //else
+  //{
+  chdir("./other");
+  //}
   char *oldFile = malloc(strlen(fileName)+4);
   strcpy(oldFile, "../");
   strcat(oldFile, fileName);
 
-
+  printf("%s\n", test );
 
   int buf_size = statbuf.st_size;
   char buffer[buf_size];
