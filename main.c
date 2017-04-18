@@ -123,14 +123,14 @@ void organize(DIR *dir)
 void  easyOrg(char *fileName, char* fileExt)
 {
   int ofile, nfile, nread, nwrite;
-  struct stat statbuf;
-
+//  struct stat statbuf;
+/*
   if(stat(fileName, &statbuf) == -1)
   {
     fprintf(stderr, "%s\n", "Could not get stat on file");
     exit(1);
   }
-
+*/
   if(strcmp(fileExt, PNG) ==0 || strcmp(fileExt, JPEG) ==0)
   {
     chdir("./pictures");
