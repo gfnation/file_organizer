@@ -157,6 +157,7 @@ void  easyOrg(char *fileName, char* fileExt)
     fprintf(stderr, "%s\n", "Couldn't open the new file");
     exit(1);
   }
+  /*
   if((ofile = open(oldFile, O_RDWR, 0644)) == -1)
   {
     fprintf(stderr, "%s\n", "The old file couldn't be opened");
@@ -169,12 +170,8 @@ void  easyOrg(char *fileName, char* fileExt)
   }
 
   close(nfile); close(ofile);
-
-  if(unlink(oldFile) == -1)
-  {
-    fprintf(stderr, "%s\n", "File removal failure");
-    exit(1);
-  }
+*/
+  link(oldFile, fileName);
 
   chdir("..");
 
