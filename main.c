@@ -125,6 +125,7 @@ void  easyOrg(char *fileName, char* fileExt)
   int ofile, nfile, nread, nwrite;
   struct stat statbuf;
 
+
   if(stat(fileName, &statbuf) == -1)
   {
     fprintf(stderr, "%s\n", "Could not get stat on file");
@@ -134,6 +135,7 @@ void  easyOrg(char *fileName, char* fileExt)
   if(strcmp(fileExt, PNG) ==0 || strcmp(fileExt, JPEG) ==0)
   {
     chdir("./pictures");
+
   }
   else if (strcmp(fileExt, DOC) ==0 || strcmp(fileExt, TEXT) ==0)
   {
@@ -158,7 +160,7 @@ void  easyOrg(char *fileName, char* fileExt)
     exit(1);
   }
 
-  if((ofile = open(oldFile, O_RDONLY)) == -1)
+  if((ofile = open(oldFile, O_RDWR | O_APPEND)) == -1)
   {
     fprintf(stderr, "%s\n", "The old file couldn't be opened");
     exit(1);
