@@ -122,7 +122,6 @@ void organize(DIR *dir)
 
 void  easyOrg(char *fileName, char* fileExt)
 {
-  printf("%s %s %d\n", fileExt, PNG, strcmp(fileExt, PNG));
   int ofile, nfile, nread, nwrite;
   struct stat statbuf;
 
@@ -132,11 +131,11 @@ void  easyOrg(char *fileName, char* fileExt)
     exit(1);
   }
 
-  if(fileExt == PNG || fileExt == JPEG)
+  if(strcmp(fileExt, PNG) ==0 || strcmp(fileExt, JPEG) ==0)
   {
     chdir("./pictures");
   }
-  else if (fileExt == DOC || fileExt == TEXT)
+  else if (strcmp(fileExt, DOC) ==0 || strcmp(fileExt, TEXT) ==0)
   {
     chdir("./documents");
   }
