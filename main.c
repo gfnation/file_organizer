@@ -152,7 +152,7 @@ void  easyOrg(char *fileName, char* fileExt)
 //  int buf_size = statbuf.st_size;
 //  char buffer[buf_size];
 
-  if((nfile = open(fileName, O_RDWR | O_CREAT, 0644)) ==-1)
+  if((nfile = creat(fileName, 0644)) ==-1)
   {
     fprintf(stderr, "%s\n", "Couldn't open the new file");
     exit(1);
