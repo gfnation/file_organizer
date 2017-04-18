@@ -157,7 +157,7 @@ void  easyOrg(char *fileName, char* fileExt)
     fprintf(stderr, "%s\n", "Couldn't open the new file");
     exit(1);
   }
-  if((ofile = open(oldFile, O_RDONLY)) == -1)
+  if((ofile = open(oldFile, O_RDWR, 0644)) == -1)
   {
     fprintf(stderr, "%s\n", "The old file couldn't be opened");
     exit(1);
