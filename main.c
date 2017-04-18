@@ -7,12 +7,12 @@
 #include <fcntl.h>
 #include <dirent.h>
 
-#define VIDEO ".mkv"
-#define MUSIC ".mp3"
-#define DOC ".docx"
-#define TEXT ".txt"
-#define JPEG ".jpg"
-#define PNG ".png"
+#define VIDEO ".mkv\0"
+#define MUSIC ".mp3\0"
+#define DOC ".docx\0"
+#define TEXT ".txt\0"
+#define JPEG ".jpg\0"
+#define PNG ".png\0"
 
 char* findExtension(char* fileName);
 void organize(DIR* dir);
@@ -122,7 +122,7 @@ void organize(DIR *dir)
 
 void  easyOrg(char *fileName, char* fileExt)
 {
-  printf("%s\n", fileExt);
+  printf("%s %s\n", fileExt, PNG);
   int ofile, nfile, nread, nwrite;
   struct stat statbuf;
 
