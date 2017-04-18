@@ -121,6 +121,7 @@ void organize(DIR *dir)
 
 void  easyOrg(char *fileName, char* fileExt)
 {
+  printf("%s\n", fileExt);
   int ofile, nfile, nread, nwrite;
   struct stat statbuf;
 
