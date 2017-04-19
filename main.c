@@ -145,12 +145,10 @@ void  easyOrg(char *fileName, char* fileExt)
     {
       chdir("./other");
     }
-    
-    char *oldFile = malloc(strlen(fileName)+4);
-    strcpy(oldFile, "../");
-    strcat(oldFile, fileName);
 
-    printf("%s\n", "test" );
+    //char *oldFile = malloc(strlen(fileName)+4);
+    //strcpy(oldFile, "../");
+    //strcat(oldFile, fileName);
 
     int buf_size = statbuf.st_size;
     char buffer[buf_size];
@@ -160,9 +158,8 @@ void  easyOrg(char *fileName, char* fileExt)
       fprintf(stderr, "%s\n", "Couldn't open the new file");
       exit(1);
     }
-    printf("%s\n", oldFile );
-
-    if((ofile = open(oldFile, O_RDONLY)) == -1)
+    chdir("..");
+    if((ofile = open(fileName, O_RDONLY)) == -1)
     {
       fprintf(stderr, "%s\n", "The old file couldn't be opened");
       exit(1);
@@ -174,9 +171,6 @@ void  easyOrg(char *fileName, char* fileExt)
     }
 
     close(nfile); close(ofile);
-
-
-    chdir("..");
 
   }
 
