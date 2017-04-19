@@ -130,7 +130,7 @@ void  easyOrg(char *fileName, char* fileExt)
   {
     fprintf(stderr, "%s\n", "Could not get stat on file");
     exit(1);
-
+  }
 
     if(strcmp(fileExt, PNG) ==0 || strcmp(fileExt, JPEG) ==0)
     {
@@ -145,6 +145,7 @@ void  easyOrg(char *fileName, char* fileExt)
     {
       chdir("./other");
     }
+    
     char *oldFile = malloc(strlen(fileName)+4);
     strcpy(oldFile, "../");
     strcat(oldFile, fileName);
@@ -178,6 +179,7 @@ void  easyOrg(char *fileName, char* fileExt)
     chdir("..");
 
   }
+
 
 
   int ignore(char* name)
