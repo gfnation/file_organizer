@@ -178,6 +178,10 @@ void  easyOrg(char *fileName, char* fileExt)
 
     close(nfile); close(ofile);
 
+    chdir("..");
+
+    remove(fileName);
+
   }
 
 
