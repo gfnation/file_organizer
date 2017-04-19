@@ -125,7 +125,7 @@ void  easyOrg(char *fileName, char* fileExt)
   int ofile, nfile, nread, nwrite;
   struct stat statbuf;
 
-  if((ofile = open(fileName, 0777)) == -1)
+  if((ofile = open(fileName, O_RDONLY)) == -1)
   {
     fprintf(stderr, "%s\n", "The old file couldn't be opened");
     exit(1);
