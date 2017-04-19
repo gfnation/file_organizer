@@ -18,6 +18,8 @@ char* findExtension(char* fileName);
 void organize(DIR* dir);
 void  easyOrg(char *fileName, char* fileExt);
 int ignore(char* name);
+void musicOrg(char* fileName);
+void vidOrg(char* fileName);
 
 int main(int argc, char* argv[])
 {
@@ -93,12 +95,12 @@ void organize(DIR *dir)
     {
       if(strcmp(findExtension(dir_pt->d_name), VIDEO) == 0)
       {
-
-
+        vidOrg(dir_pt->d_name);
       }
       else if(strcmp(findExtension(dir_pt->d_name), MUSIC) == 0)
       {
         //TODO: add music caller here
+        musicOrg(dir_pt->d_name);
       }
       else if(strcmp(findExtension(dir_pt->d_name), DOC) == 0 || strcmp(findExtension(dir_pt->d_name), TEXT) == 0)
       {
@@ -118,6 +120,42 @@ void organize(DIR *dir)
       }
     }
   }
+}
+void vidOrg(char* fileName)
+{
+
+}
+
+void musicOrg(char* fileName)
+{
+  char* throwAway = malloc(sizeof(char) * strlen(fileName));
+  strcpy(fileName, throwAway);
+  char* artist =strtok(throwAway, "-");
+  char* album = strtok(NULL, "-");
+  char* song = strtok(NULL, "-");
+
+
+  //We know the extension will put us in music folders
+  chdir("./music");
+
+  //Time to read the directory for the Artist name
+  struct dirent *dirent_pt;
+  unsigned char found = 1;
+  while(((dirent_pt = readdir) != NULL) && found ==1)
+  {
+    if(strcmp(artist, dirent->d_name) == 0)
+    {
+      chdir(artist);
+      found =0;
+    }
+  }
+  //if found = 1 the artist was not found
+  if(found ==1)
+  {
+    mkdir(artist);
+    chdir(artist);
+  }
+
 }
 
 void  easyOrg(char *fileName, char* fileExt)
@@ -154,10 +192,6 @@ void  easyOrg(char *fileName, char* fileExt)
       printf("%s\n","Working in other now");
       chdir("./other");
     }
-
-    //char *oldFile = malloc(strlen(fileName)+4);
-    //strcpy(oldFile, "../");
-    //strcat(oldFile, fileName);
 
     int buf_size = statbuf.st_size;
     char buffer[buf_size];
