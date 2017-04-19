@@ -140,65 +140,65 @@ void  easyOrg(char *fileName, char* fileExt)
     else if (strcmp(fileExt, DOC) ==0 || strcmp(fileExt, TEXT) ==0)
     {
       chdir("./documents");
-
-      else
-      {
-        chdir("./other");
-      }
-      char *oldFile = malloc(strlen(fileName)+4);
-      strcpy(oldFile, "../");
-      strcat(oldFile, fileName);
-
-      printf("%s\n", "test" );
-
-      int buf_size = statbuf.st_size;
-      char buffer[buf_size];
-
-      if((nfile = open(fileName, O_CREAT | O_WRONLY, 0644)) ==-1)
-      {
-        fprintf(stderr, "%s\n", "Couldn't open the new file");
-        exit(1);
-      }
-      printf("%s\n", oldFile );
-
-      if((ofile = open(oldFile, O_RDONLY)) == -1)
-      {
-        fprintf(stderr, "%s\n", "The old file couldn't be opened");
-        exit(1);
-      }
-
-      while ((nread = read(ofile, buffer, buf_size)) > 0)
-      {
-        nwrite = write(nfile, buffer, buf_size);
-      }
-
-      close(nfile); close(ofile);
-
-
-      chdir("..");
-
     }
-
-
-    int ignore(char* name)
+    else
     {
-      //ignore current and past directories
-      if(strcmp(name, ".") == 0 || strcmp(name, "..") ==0 || strcmp(name, "core") == 0)
-      {
-        return 1;
-      }
-      //ignore folders I made
-      else if(strcmp(name, "music") == 0 || strcmp(name, "movies") == 0 || strcmp(name, "shows") == 0 || strcmp(name, "documents")==0 || strcmp(name, "other")==0 || strcmp(name, "pictures") ==0)
-      {
-        return 1;
-      }
-      //ignore headers and c files and executables
-      else if(strcmp(findExtension(name), ".c") ==0 || strcmp(findExtension(name), ".h") ==0 || strcmp(name, "organizer") ==0)
-      {
-        return 1;
-      }
-      else
-      {
-        return 0;
-      }
+      chdir("./other");
     }
+    char *oldFile = malloc(strlen(fileName)+4);
+    strcpy(oldFile, "../");
+    strcat(oldFile, fileName);
+
+    printf("%s\n", "test" );
+
+    int buf_size = statbuf.st_size;
+    char buffer[buf_size];
+
+    if((nfile = open(fileName, O_CREAT | O_WRONLY, 0644)) ==-1)
+    {
+      fprintf(stderr, "%s\n", "Couldn't open the new file");
+      exit(1);
+    }
+    printf("%s\n", oldFile );
+
+    if((ofile = open(oldFile, O_RDONLY)) == -1)
+    {
+      fprintf(stderr, "%s\n", "The old file couldn't be opened");
+      exit(1);
+    }
+
+    while ((nread = read(ofile, buffer, buf_size)) > 0)
+    {
+      nwrite = write(nfile, buffer, buf_size);
+    }
+
+    close(nfile); close(ofile);
+
+
+    chdir("..");
+
+  }
+
+
+  int ignore(char* name)
+  {
+    //ignore current and past directories
+    if(strcmp(name, ".") == 0 || strcmp(name, "..") ==0 || strcmp(name, "core") == 0)
+    {
+      return 1;
+    }
+    //ignore folders I made
+    else if(strcmp(name, "music") == 0 || strcmp(name, "movies") == 0 || strcmp(name, "shows") == 0 || strcmp(name, "documents")==0 || strcmp(name, "other")==0 || strcmp(name, "pictures") ==0)
+    {
+      return 1;
+    }
+    //ignore headers and c files and executables
+    else if(strcmp(findExtension(name), ".c") ==0 || strcmp(findExtension(name), ".h") ==0 || strcmp(name, "organizer") ==0)
+    {
+      return 1;
+    }
+    else
+    {
+      return 0;
+    }
+  }
