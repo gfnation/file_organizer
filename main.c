@@ -41,11 +41,11 @@ int main(int argc, char* argv[])
   }
 
   //Make all directory
-  mkdir("./music", 0644);
+  mkdir("./music", 0777);
   mkdir("./movies", 0644);
   mkdir("./shows", 0644);
   mkdir("./documents", 0644);
-  mkdir("./pictures", 0644);
+  mkdir("./pictures", 0777);
   mkdir("./other", 0644);
 
   DIR *dir = opendir(".");
