@@ -42,11 +42,11 @@ int main(int argc, char* argv[])
 
   //Make all directory
   mkdir("./music", 0777);
-  mkdir("./movies", 0644);
-  mkdir("./shows", 0644);
-  mkdir("./documents", 0644);
+  mkdir("./movies", 0777);
+  mkdir("./shows", 0777);
+  mkdir("./documents", 0777);
   mkdir("./pictures", 0777);
-  mkdir("./other", 0644);
+  mkdir("./other", 0777);
 
   DIR *dir = opendir(".");
   organize(dir);
