@@ -158,7 +158,6 @@ void  easyOrg(char *fileName, char* fileExt)
       fprintf(stderr, "%s\n", "Couldn't open the new file");
       exit(1);
     }
-    chdir("..");
     printf("%s\n", fileName);
     if((ofile = open(fileName, O_RDONLY)) == -1)
     {
