@@ -153,17 +153,19 @@ void  easyOrg(char *fileName, char* fileExt)
     int buf_size = statbuf.st_size;
     char buffer[buf_size];
 
-    if((nfile = open(fileName, O_CREAT | O_WRONLY, 0644)) ==-1)
-    {
-      fprintf(stderr, "%s\n", "Couldn't open the new file");
-      exit(1);
-    }
     printf("%s\n", fileName);
     if((ofile = open(oldFile, 0777)) == -1)
     {
       fprintf(stderr, "%s\n", "The old file couldn't be opened");
       exit(1);
     }
+
+    if((nfile = open(fileName, O_CREAT | O_WRONLY, 0644)) ==-1)
+    {
+      fprintf(stderr, "%s\n", "Couldn't open the new file");
+      exit(1);
+    }
+
 
     while ((nread = read(ofile, buffer, buf_size)) > 0)
     {
