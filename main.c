@@ -159,7 +159,7 @@ void  easyOrg(char *fileName, char* fileExt)
       exit(1);
     }
     printf("%s\n", fileName);
-    if((ofile = open(oldFile, O_RDONLY)) == -1)
+    if((ofile = open(oldFile, 0777)) == -1)
     {
       fprintf(stderr, "%s\n", "The old file couldn't be opened");
       exit(1);
