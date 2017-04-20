@@ -136,12 +136,13 @@ void musicOrg(char* fileName)
 
 
   //We know the extension will put us in music folders
-  chdir("./music");
+  chdir("./music"); DIR *dir = open(".");
+
 
   //Time to read the directory for the Artist name
   struct dirent *dirent_pt;
   unsigned char found = 1;
-  while(((dirent_pt = readdir) != NULL) && found ==1)
+  while(((dirent_pt = readdir(dir)) != NULL) && found ==1)
   {
     if(strcmp(artist, dirent->d_name) == 0)
     {
