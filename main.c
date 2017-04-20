@@ -144,7 +144,7 @@ void musicOrg(char* fileName)
   unsigned char found = 1;
   while(((dirent_pt = readdir(dir)) != NULL) && found ==1)
   {
-    if(strcmp(artist, dirent->d_name) == 0)
+    if(strcmp(artist, dirent_pt->d_name) == 0)
     {
       chdir(artist);
       found =0;
@@ -153,7 +153,7 @@ void musicOrg(char* fileName)
   //if found = 1 the artist was not found
   if(found ==1)
   {
-    mkdir(artist);
+    mkdir(artist, 0777);
     chdir(artist);
   }
 
