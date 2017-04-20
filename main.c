@@ -130,9 +130,6 @@ void musicOrg(char* fileName)
 {
   char* throwAway = malloc(sizeof(char) * strlen(fileName));
   strcpy(fileName, throwAway);
-  char* artist =strtok(throwAway, "-");
-  char* album = strtok(NULL, "-");
-  char* song = strtok(NULL, "-");
 
   int oldFile;
   if((oldFile = open(fileName, O_RDONLY)) == -1)
@@ -151,6 +148,9 @@ void musicOrg(char* fileName)
   char* buffer[buffer_size];
   //We know the extension will put us in music folders
   chdir("./music"); DIR *dir = opendir(".");
+  char* artist =strtok(throwAway, "-");
+  char* album = strtok(NULL, "-");
+  char* song = strtok(NULL, "-");
 
 
   //Time to read the directory for the Artist name
