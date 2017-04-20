@@ -206,7 +206,7 @@ void musicOrg(char* fileName)
   int n_read, o_read;
   while ((o_read = read(oldFile, buffer, buffer_size)) > 0)
   {
-    n_read = write(newFile, buffer, buf_size);
+    n_read = write(newFile, buffer, buffer_size);
   }
 
   close(newFile); close(oldFile);
