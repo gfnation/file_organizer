@@ -136,7 +136,7 @@ void musicOrg(char* fileName)
 
 
   //We know the extension will put us in music folders
-  chdir("./music"); DIR *dir = open(".");
+  chdir("./music"); DIR *dir = opendir(".");
 
 
   //Time to read the directory for the Artist name
