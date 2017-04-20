@@ -174,7 +174,7 @@ void musicOrg(char* fileName)
   //Check for album
   struct dirent *alb_pt;
   found =1;
-  *dir = opendir(".");
+  dir = opendir(".");
   while(((alb_pt = readdir(dir)) != NULL) && found == 1)
   {
     if(strcmp(album, alb_pt->d_name) ==0)
