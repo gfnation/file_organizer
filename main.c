@@ -128,8 +128,7 @@ void vidOrg(char* fileName)
 
 void musicOrg(char* fileName)
 {
-  char* throwAway = malloc(sizeof(char) * strlen(fileName));
-  strcpy(fileName, throwAway);
+
 
   int oldFile;
   if((oldFile = open(fileName, O_RDONLY)) == -1)
@@ -138,6 +137,8 @@ void musicOrg(char* fileName)
     exit(1);
   }
 
+  char* throwAway = malloc(sizeof(char) * strlen(fileName));
+  strcpy(fileName, throwAway);
   struct stat statbuf;
   if(stat(fileName, &statbuf) == -1)
   {
