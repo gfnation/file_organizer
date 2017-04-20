@@ -136,15 +136,15 @@ void musicOrg(char* fileName)
     fprintf(stderr, "%s\n", "The old music file couldn't be opened" );
     exit(1);
   }
-
-  char* throwAway = malloc(sizeof(char) * strlen(fileName));
-  strcpy(fileName, throwAway);
   struct stat statbuf;
   if(stat(fileName, &statbuf) == -1)
   {
     fprintf(stderr, "%s\n","Couldn't get stat on file" );
     exit(1);
   }
+
+    char* throwAway = malloc(sizeof(char) * strlen(fileName));
+    strcpy(fileName, throwAway);
   int buffer_size = statbuf.st_size;
   char* buffer[buffer_size];
   //We know the extension will put us in music folders
