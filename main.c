@@ -143,8 +143,10 @@ void musicOrg(char* fileName)
     exit(1);
   }
 
-    char* throwAway = malloc(sizeof(char) * strlen(fileName));
-    strcpy(fileName, throwAway);
+  char* throwAway = malloc(sizeof(char) * strlen(fileName) +1);
+  strcpy(fileName, throwAway);
+
+
   int buffer_size = statbuf.st_size;
   char* buffer[buffer_size];
   //We know the extension will put us in music folders
@@ -194,7 +196,7 @@ void musicOrg(char* fileName)
   //Now that we are in album create final file
   int newFile;
   //Create a new name for the song
-  char* songExt = malloc((sizeof(char) * strlen(song)) + (sizeof(char) * strlen(findExtension(fileName))));
+  char* songExt = malloc((sizeof(char) * strlen(song)) + (sizeof(char) * strlen(findExtension(fileName))) + 1);
   strcpy(songExt, song);
   strcat(songExt, findExtension(fileName));
 
