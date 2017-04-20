@@ -195,7 +195,7 @@ void musicOrg(char* fileName)
   //Create a new name for the song
   char* songExt = malloc((sizeof(char) * strlen(song)) + (sizeof(char) * strlen(findExtension(fileName))));
   strcpy(songExt, song);
-  strcat(songExt, fileExt(fileName));
+  strcat(songExt, findExtension(fileName));
 
   if((newFile = open(songExt, O_CREAT | O_WRONLY, 0644)) == -1)
   {
