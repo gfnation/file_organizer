@@ -134,7 +134,21 @@ void musicOrg(char* fileName)
   char* album = strtok(NULL, "-");
   char* song = strtok(NULL, "-");
 
+  int oldFile;
+  if((oldFile = open(fileName, O_RDONLY)) == -1)
+  {
+    fprintf(stderr, "%s\n", "The old music file couldn't be opened" );
+    exit(1);
+  }
 
+  struct stat statbuf;
+  if(stat(fileName, &statbuf) == -1)
+  {
+    fprintf(stderr, "%s\n","Couldn't get stat on file" );
+    exit(1);
+  }
+  int buffer_size = statbuf.st_size;
+  char* buffer[buffer_size];
   //We know the extension will put us in music folders
   chdir("./music"); DIR *dir = opendir(".");
 
@@ -157,6 +171,48 @@ void musicOrg(char* fileName)
     chdir(artist);
   }
 
+  //Check for album
+  struct dirent *alb_pt;
+  found =1;
+  *dir = opendir(".");
+  while(((alb_pt = readdir(dir)) != NULL) && found == 1)
+  {
+    if(strcmp(album, alb_pt->d_name) ==0)
+    {
+      chdir(album);
+      found = 0;
+    }
+  }
+
+  if(found == 1)
+  {
+    mkdir(album, 0777);
+    chdir(album);
+  }
+
+  //Now that we are in album create final file
+  int newFile;
+  //Create a new name for the song
+  char* songExt = malloc((sizeof(char) * strlen(song)) + (sizeof(char) * strlen(findExtension(fileName))));
+  strcpy(songExt, song);
+  strcat(songExt, fileExt(fileName));
+
+  if((newFile = open(songExt, O_CREAT | O_WRONLY, 0644)) == -1)
+  {
+    fprintf(stderr, "%s\n", "The file couldn't be moved");
+    exit(1);
+  }
+
+  int n_read, o_read;
+  while ((o_read = read(oldFile, buffer, buffer_size)) > 0)
+  {
+    n_read = write(newFile, buffer, buf_size);
+  }
+
+  close(newFile); close(oldFile);
+
+  chdir("../..");
+  remove(fileName);
 }
 
 void  easyOrg(char *fileName, char* fileExt)
