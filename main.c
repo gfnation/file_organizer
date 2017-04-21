@@ -155,13 +155,11 @@ void musicOrg(char* fileName)
   char* album = strtok(NULL, "-");
   char* song = strtok(NULL, "-");
 
-  printf("%s\n", song );
-printf("%s\n", artist);
-printf("%s\n", album );
 
   //Time to read the directory for the Artist name
   struct dirent *dirent_pt;
   unsigned char found = 1;
+  printf("%s\n", found );
   while(((dirent_pt = readdir(dir)) != NULL) || found ==1)
   {
     printf("%d %s \n", found, dirent_pt->d_name);
