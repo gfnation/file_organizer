@@ -160,8 +160,7 @@ void musicOrg(char* fileName)
   struct dirent *dirent_pt;
   unsigned char found = 1;
   fflush(stderr);
-  printf("%s\n", "Make it");
-  while(((dirent_pt = readdir(dir)) != NULL) && found ==1)
+  while(((dirent_pt = readdir(dir)) != NULL) || found ==1)
   {
     if(strcmp(artist, dirent_pt->d_name) == 0)
     {
