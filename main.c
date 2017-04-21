@@ -130,7 +130,7 @@ void musicOrg(char* fileName)
 {
 
   printf("%s\n", fileName);
-  strcpy(fileName, throwAway);  
+  strcpy(throwAway, fileName);
   char* artist =strtok(throwAway, "-");
 
   printf("%s\n", throwAway);
