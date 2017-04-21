@@ -130,6 +130,8 @@ void musicOrg(char* fileName)
 {
 
   printf("%s\n", fileName);
+
+    char* throwAway = malloc(sizeof(char) * strlen(fileName) +1);
   strcpy(throwAway, fileName);
   char* artist =strtok(throwAway, "-");
 
@@ -148,7 +150,6 @@ void musicOrg(char* fileName)
     exit(1);
   }
 
-  char* throwAway = malloc(sizeof(char) * strlen(fileName) +1);
 
 
   int buffer_size = statbuf.st_size;
