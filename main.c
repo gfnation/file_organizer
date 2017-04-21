@@ -129,6 +129,7 @@ void vidOrg(char* fileName)
 void musicOrg(char* fileName)
 {
 
+  printf("%s\n", fileName);
 
   int oldFile;
   if((oldFile = open(fileName, O_RDONLY)) == -1)
@@ -151,7 +152,6 @@ void musicOrg(char* fileName)
   char* buffer[buffer_size];
   //We know the extension will put us in music folders
   chdir("./music"); DIR *dir = opendir(".");
-  printf("%s\n", fileName);
   char* artist =strtok(throwAway, "-");
   char* album = strtok(NULL, "-");
   char* song = strtok(NULL, "-");
