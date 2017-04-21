@@ -131,9 +131,12 @@ void musicOrg(char* fileName)
 
   printf("%s\n", fileName);
 
-    char* throwAway = malloc(sizeof(char) * strlen(fileName) +1);
+  char* throwAway = malloc(sizeof(char) * strlen(fileName) +1);
   strcpy(throwAway, fileName);
+  printf("%s %s\n", throwAway, fileName);
+
   char* nextTok =strtok(throwAway, "-");
+  printf("%s %s\n", nextTok,throwAway );
   //char* album = strtok(NULL, "-");
   //char* song = strtok(NULL, "-");
 
