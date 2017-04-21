@@ -151,18 +151,18 @@ void musicOrg(char* fileName)
   char* buffer[buffer_size];
   //We know the extension will put us in music folders
   chdir("./music"); DIR *dir = opendir(".");
+  printf("%s\n", "1");
   char* artist =strtok(throwAway, "-");
   char* album = strtok(NULL, "-");
   char* song = strtok(NULL, "-");
-
+printf("%s\n,"2" );
 
   //Time to read the directory for the Artist name
   struct dirent *dirent_pt;
-  unsigned char found = 1;
+  int found = 1;
   printf("%s\n", found );
   while(((dirent_pt = readdir(dir)) != NULL) || found ==1)
   {
-    printf("%d %s \n", found, dirent_pt->d_name);
     if(strcmp(artist, dirent_pt->d_name) == 0)
     {
       chdir(artist);
