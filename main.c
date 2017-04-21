@@ -135,7 +135,7 @@ void musicOrg(char* fileName)
   strcpy(throwAway, fileName);
   char* artist =strtok(throwAway, "-");
 
-  printf("%s\n", throwAway);
+  printf("%s %s\n", throwAway, artist);
 
   int oldFile;
   if((oldFile = open(fileName, O_RDONLY)) == -1)
