@@ -159,10 +159,10 @@ printf("%s\n","2" );
 
   //Time to read the directory for the Artist name
 
-  printf("b")
+  printf("b");
   struct dirent *dirent_pt;
 
-  printf("#")
+  printf("#");
   int found = 1;
   printf("%s\n", found );
   while(((dirent_pt = readdir(dir)) != NULL) || found ==1)
