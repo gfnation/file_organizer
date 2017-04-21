@@ -155,7 +155,7 @@ void musicOrg(char* fileName)
   char* artist =strtok(throwAway, "-");
   char* album = strtok(NULL, "-");
   char* song = strtok(NULL, "-");
-printf("%s\n,"2" );
+printf("%s\n","2" );
 
   //Time to read the directory for the Artist name
   struct dirent *dirent_pt;
