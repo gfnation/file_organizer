@@ -159,13 +159,12 @@ void musicOrg(char* fileName)
   //Time to read the directory for the Artist name
   struct dirent *dirent_pt;
   unsigned char found = 1;
-  fflush(stderr);
   while(((dirent_pt = readdir(dir)) != NULL) || found ==1)
   {
+    printf("%d %s\n", &found, dirent_pt->d_name );
     if(strcmp(artist, dirent_pt->d_name) == 0)
     {
       chdir(artist);
-      printf("%s\n", "Now working artist");
       found =0;
     }
   }
