@@ -164,6 +164,7 @@ void musicOrg(char* fileName)
     if(strcmp(artist, dirent_pt->d_name) == 0)
     {
       chdir(artist);
+      printf("%s\n", "Now working artist");
       found =0;
     }
   }
