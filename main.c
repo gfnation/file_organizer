@@ -161,7 +161,7 @@ void musicOrg(char* fileName)
   unsigned char found = 1;
   while(((dirent_pt = readdir(dir)) != NULL) || found ==1)
   {
-    printf("%d %s\n", &found, dirent_pt->d_name );
+    printf("%d %s %s\n", found, dirent_pt->d_name, artist);
     if(strcmp(artist, dirent_pt->d_name) == 0)
     {
       chdir(artist);
