@@ -135,7 +135,8 @@ void musicOrg(char* fileName)
   strcpy(throwAway, fileName);
   printf("%s %s\n", throwAway, fileName);
 
-  char* nextTok =strtok(throwAway, "-");
+  char* nextTok;
+  nextTok =strtok(throwAway, "-");
   printf("%s %s\n", nextTok,throwAway );
   //char* album = strtok(NULL, "-");
   //char* song = strtok(NULL, "-");
