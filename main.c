@@ -163,6 +163,7 @@ printf("%s\n","2" );
   printf("%s\n", found );
   while(((dirent_pt = readdir(dir)) != NULL) || found ==1)
   {
+    printf("#")
     if(strcmp(artist, dirent_pt->d_name) == 0)
     {
       chdir(artist);
