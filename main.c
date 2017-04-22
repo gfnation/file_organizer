@@ -171,17 +171,17 @@ void musicOrg(char* fileName)
   int found = 1;
   while(((dirent_pt = readdir(dir)) != NULL) || found ==1)
   {
-    if(strcmp(nextTok, dirent_pt->d_name) == 0)
+    if(strcmp(artist, dirent_pt->d_name) == 0)
     {
-      chdir(nextTok);
+      chdir(artist);
       found =0;
     }
   }
   //if found = 1 the artist was not found
   if(found ==1)
   {
-    mkdir(nextTok, 0777);
-    chdir(nextTok);
+    mkdir(artist, 0777);
+    chdir(artist);
   }
 
   //Check for album
@@ -190,27 +190,24 @@ void musicOrg(char* fileName)
   dir = opendir(".");
   while(((alb_pt = readdir(dir)) != NULL) && found == 1)
   {
-    if(strcmp(nextTok, alb_pt->d_name) ==0)
+    if(strcmp(album, alb_pt->d_name) ==0)
     {
-      chdir(nextTok);
+      chdir(album);
       found = 0;
     }
   }
 
   if(found == 1)
   {
-    mkdir(nextTok, 0777);
-    chdir(nextTok);
+    mkdir(album, 0777);
+    chdir(album);
   }
 
   //Now that we are in album create final file
   int newFile;
   //Create a new name for the song
-  char* songExt = malloc((sizeof(char) * strlen(nextTok)) + (sizeof(char) * strlen(findExtension(fileName))) + 1);
-  strcpy(songExt, nextTok);
-  strcat(songExt, findExtension(fileName));
 
-  if((newFile = open(songExt, O_CREAT | O_WRONLY, 0644)) == -1)
+  if((newFile = open(albRemaining, O_CREAT | O_WRONLY, 0644)) == -1)
   {
     fprintf(stderr, "%s\n", "The file couldn't be moved");
     exit(1);
