@@ -188,7 +188,7 @@ void vidOrg(char* fileName)
     //If found = 1 then the directory isn't found
     if(found == 1)
     {
-      mkdir(yearDir);
+      mkdir(yearDir, 0777);
       chdir(yearDir);
     }
     //Now we are in the year Directory place the new file in the folder.
