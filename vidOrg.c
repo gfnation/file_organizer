@@ -144,7 +144,7 @@ void vidOrg(char* fileName)
 
     close(newFile); close(oldFile);
 
-    chdir("../../..");
+    chdir("../..");
   }
   remove(fileName);
 
