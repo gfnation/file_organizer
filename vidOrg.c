@@ -91,7 +91,7 @@ void vidOrg(char* fileName)
     char* showRemain = getRemaining(fileName, show);
     char* season = getTokened(showRemain, '-');
     char* episode = getRemaining(showRemain, season);
-
+    printf("%s\n", episode );
     printcwd();
     //change directory to tv shows
     chdir("./shows");
