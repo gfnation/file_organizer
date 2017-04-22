@@ -132,19 +132,18 @@ void vidOrg(char* fileName)
 void musicOrg(char* fileName)
 {
 
-  printf("%s\n", fileName);
+
 
   char* throwAway = malloc(sizeof(char) * strlen(fileName) +1);
   strcpy(throwAway, fileName);
 
 //Make own tokenizer
 
-  char* artist;
-  artist = getTokened(fileName, '-');
+  char* artist = getTokened(fileName, '-');
   char* artRemaining = getRemaining(fileName, artist);
   char* album = getTokened(artRemaining, '-');
   char* albRemaining = getRemaining(artRemaining, album);
-  printf("%s %s %s\n", artist, album, albRemaining);
+
 
   int oldFile;
   if((oldFile = open(fileName, O_RDONLY)) == -1)
@@ -152,22 +151,21 @@ void musicOrg(char* fileName)
     fprintf(stderr, "%s\n", "The old music file couldn't be opened" );
     exit(1);
   }
-  printf("%s\n", "Old file opened");
   struct stat statbuf;
   if(stat(fileName, &statbuf) == -1)
   {
     fprintf(stderr, "%s\n","Couldn't get stat on file" );
     exit(1);
   }
-  printf("%s\n", "stat is found" );
 
 
   int buffer_size = statbuf.st_size;
   char* buffer[buffer_size];
   //We know the extension will put us in music folders
   chdir("./music"); DIR *dir = opendir(".");
-  printf("%s\n", "directory changed to music");
-
+////
+////
+///
   //Time to read the directory for the Artist name
   struct dirent *dirent_pt;
   int found = 1;
@@ -185,6 +183,7 @@ void musicOrg(char* fileName)
     mkdir(artist, 0777);
     chdir(artist);
   }
+  printf("%s\n", "made it" );
 
   //Check for album
   struct dirent *alb_pt;
