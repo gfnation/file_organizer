@@ -152,19 +152,21 @@ void musicOrg(char* fileName)
     fprintf(stderr, "%s\n", "The old music file couldn't be opened" );
     exit(1);
   }
+  printf("%s\n", "Old file opened");
   struct stat statbuf;
   if(stat(fileName, &statbuf) == -1)
   {
     fprintf(stderr, "%s\n","Couldn't get stat on file" );
     exit(1);
   }
-
+  printf("%s\n", "stat is found" );
 
 
   int buffer_size = statbuf.st_size;
   char* buffer[buffer_size];
   //We know the extension will put us in music folders
   chdir("./music"); DIR *dir = opendir(".");
+  printf("%s\n", "directory changed to music");
 
   //Time to read the directory for the Artist name
   struct dirent *dirent_pt;
