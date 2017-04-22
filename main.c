@@ -167,21 +167,25 @@ void musicOrg(char* fileName)
 ////
 ///
   //Time to read the directory for the Artist name
+  char* artPath = malloc((sizeof(char) * strlen(artist)) +2);
+  strcpy(artPath, "./");
+  strcat(artPath, artist);
+  printf("%s\n", artPath );
   struct dirent *dirent_pt;
   int found = 1;
   while(((dirent_pt = readdir(dir)) != NULL) || found ==1)
   {
     if(strcmp(artist, dirent_pt->d_name) == 0)
     {
-      chdir(artist);
+      chdir(artPath);
       found =0;
     }
   }
   //if found = 1 the artist was not found
   if(found ==1)
   {
-    mkdir(artist, 0777);
-    chdir(artist);
+    mkdir(artPath, 0777);
+    chdir(artPath);
   }
   printf("%s\n", "made it" );
 
