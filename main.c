@@ -193,7 +193,7 @@ void vidOrg(char* fileName)
     }
     //Now we are in the year Directory place the new file in the folder.
     int newFile;
-    if((newFile = open(movieName, O_CREAT | O_WRONLY, 0644) == -1)
+    if((newFile = open(movieName, O_CREAT | O_WRONLY, 0644)) == -1)
     {
       fprintf(stderr, "%s\n", "The new movie file couldn't be created." );
       exit(1);
