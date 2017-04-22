@@ -91,12 +91,11 @@ void vidOrg(char* fileName)
     char* showRemain = getRemaining(fileName, show);
     char* season = getTokened(showRemain, '-');
     char* episode = getRemaining(showRemain, season);
-    printf("%s\n", episode );
-    printcwd();
+    printcwd();  //test2
     //change directory to tv shows
     chdir("./shows");
     DIR *dir = opendir(".");
-    printcwd();
+    printcwd();  //test2/shows
     char* showDir = malloc(sizeof(char)*strlen(show) +2);
     strcpy(showDir, "./"); strcat(showDir, show);
 
@@ -115,24 +114,26 @@ void vidOrg(char* fileName)
       mkdir(showDir, 0777);
       chdir(showDir);
     }
-    printcwd();
+    printcwd(); //test2/shows/Daredevil
     struct dirent *season_dir;
     found =1;
     dir = opendir(".");
-    printcwd();
+    printcwd();//test2/shows/DatreDevi
     while(((season_dir = readdir(dir)) != NULL) && found ==1)
     {
       if(strcmp(season, season_dir->d_name) ==0)
       {
         chdir(season);
+        found =0;
       }
     }
+    printcwd();
     if(found ==1)
     {
       mkdir(season, 0777);
       chdir(season);
     }
-    printcwd();
+    printcwd(); //Season2
     int newFile;
     if((newFile = open(episode, O_CREAT | O_WRONLY, 0644)) == -1)
     {
