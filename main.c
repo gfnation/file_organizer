@@ -181,7 +181,7 @@ void vidOrg(char* fileName)
     {
       if(strcmp(yr_dir->d_name, year) == 0)
       {
-        cddir(yearDir);
+        chdir(yearDir);
         found =0;
       }
     }
