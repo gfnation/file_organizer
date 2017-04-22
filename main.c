@@ -225,7 +225,7 @@ void vidOrg(char* fileName)
 
     struct dirent *show_dir;
     int found =1;
-    while((show_dir = readdir(dir) != NULL) && found == 1)
+    while(((show_dir = readdir(dir)) != NULL) && found == 1)
     {
       if(strcmp(show, show_dir->d_name) == 0)
       {
