@@ -226,7 +226,7 @@ void musicOrg(char* fileName)
 
   close(newFile); close(oldFile);
 
-  chdir("../..");
+  chdir("../../..");
   remove(fileName);
 }
 
