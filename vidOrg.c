@@ -1,7 +1,6 @@
 #include "library.h"
 #include "constants.h"
 #include "token.h"
-void printcwd();
 void vidOrg(char* fileName)
 {
   //Using file Cent to store the century the movie was made if that's the case
@@ -91,11 +90,11 @@ void vidOrg(char* fileName)
     char* showRemain = getRemaining(fileName, show);
     char* season = getTokened(showRemain, '-');
     char* episode = getRemaining(showRemain, season);
-    printcwd();  //test2
+
     //change directory to tv shows
     chdir("./shows");
     DIR *dir = opendir(".");
-    printcwd();  //test2/shows
+
     char* showDir = malloc(sizeof(char)*strlen(show) +2);
     strcpy(showDir, "./"); strcat(showDir, show);
 
@@ -114,11 +113,10 @@ void vidOrg(char* fileName)
       mkdir(showDir, 0777);
       chdir(showDir);
     }
-    printcwd(); //test2/shows/Daredevil
     struct dirent *season_dir;
     found =1;
     dir = opendir(".");
-    printcwd();//test2/shows/DatreDevi
+
     while(((season_dir = readdir(dir)) != NULL) && found ==1)
     {
       if(strcmp(season, season_dir->d_name) ==0)
@@ -127,13 +125,13 @@ void vidOrg(char* fileName)
         found =0;
       }
     }
-    printcwd();
+
     if(found ==1)
     {
       mkdir(season, 0777);
       chdir(season);
     }
-    printcwd(); //Season2
+
     int newFile;
     if((newFile = open(episode, O_CREAT | O_WRONLY, 0644)) == -1)
     {
@@ -149,15 +147,8 @@ void vidOrg(char* fileName)
     close(newFile); close(oldFile);
 
     chdir("../../..");
-    printcwd();
+    
   }
   remove(fileName);
 
-}
-
-void printcwd()
-{
-  char currDir[256];
-  if(getcwd(currDir, sizeof(currDir)) != NULL)
-    fprintf(stdout, "%s\n", currDir);
 }
