@@ -1,3 +1,6 @@
+#include "library.h"
+#include "constants.h"
+#include "token.h"
 void  easyOrg(char *fileName, char* fileExt)
 {
   int ofile, nfile, nread, nwrite;

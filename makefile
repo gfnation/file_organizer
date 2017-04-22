@@ -8,6 +8,8 @@ musicOrg.o: musicOrg.c
 	gcc -c musicOrg.c
 videoOrg.o: videoOrg.c
 	gcc -c videoOrg.o
+token.o: token.c
+	gcc -c token.c
 clean:
 	rm *.o
 destroy:

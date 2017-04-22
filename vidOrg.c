@@ -1,3 +1,6 @@
+#include "library.h"
+#include "constants.h"
+#include "token.h"
 void vidOrg(char* fileName)
 {
   //Using file Cent to store the century the movie was made if that's the case
