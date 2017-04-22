@@ -136,18 +136,15 @@ void musicOrg(char* fileName)
 
   char* throwAway = malloc(sizeof(char) * strlen(fileName) +1);
   strcpy(throwAway, fileName);
-  printf("%s %s\n", throwAway, fileName);
 
 //Make own tokenizer
 
-  char* nextTok;
-  nextTok = getTokened(fileName, '-');
-  char* remaining = getRemaining(fileName, nextTok);
-  printf("%s %s\n", nextTok,remaining );
-  //char* album = strtok(NULL, "-");
-  //char* song = strtok(NULL, "-");
-
-  //printf("%s %s\n", throwAway, artist);
+  char* artist;
+  artist = getTokened(fileName, '-');
+  char* artRemaining = getRemaining(fileName, artist);
+  char* album = getTokened(artRemaining, '-');
+  char* albRemaining = getRemaining(artRemaining, album);
+  printf("%\n", albRemaining);
 
   int oldFile;
   if((oldFile = open(fileName, O_RDONLY)) == -1)
