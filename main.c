@@ -169,7 +169,7 @@ void vidOrg(char* fileName)
 
     //Move into movie directory
     chdir("./movies"); DIR* dir = opendir(".");
-
+    printf("%s\n", "working in videos" );
     //Turn movie year into a folder
     char* yearDir = malloc((sizeof(char) * strlen(year))+ 2);
     strcpy(yearDir, "./"); strcat(yearDir, year);
@@ -211,6 +211,66 @@ void vidOrg(char* fileName)
   else
   {
 
+    //get show, season and episode
+    char* show = getTokened(fileName, '-');
+    char* showRemain = getRemaining(fileName, show);
+    char* season = getTokened(showRemain, '-');
+    char* episode = getRemaining(showRemain, season);
+
+    //change directory to tv shows
+    chdir("./shows"); DIR *dir = opendir(".");
+
+    char* showDir = malloc(sizeof(char)*strlen(show) +2);
+    strcpy(showDir, "./"); strcat(showDir, show);
+
+    struct dirent *show_dir;
+    int found =1;
+    while((show_dir = readdir(dir) != NULL) && found == 1)
+    {
+      if(strcmp(show, show_dir->d_name) == 0)
+      {
+        chdir(showDir);
+        found =0;
+      }
+    }
+    if(found ==1)
+    {
+      mkdir(showDir, 0777);
+      chdir(showDir);
+    }
+
+    struct dirent *season_dir;
+    found =1;
+    dir = opendir(".");
+
+    while(((season_dir = readdir(dir)) != NULL) && found ==1)
+    {
+      if(strcmp(season, season_dir->d_name) ==0)
+      {
+        chdir(season);
+      }
+    }
+    if(found ==1)
+    {
+      mkdir(season, 0777);
+      chdir(season);
+    }
+
+    int newFile;
+    if((newFile = open(episode, O_CREAT | O_WRONLY, 0644)) == -1)
+    {
+      fprintf(stderr, "%s\n", "The new tv show file couldn't be created." );
+      exit(1);
+    }
+    int n_read, o_read;
+    while ((o_read = read(oldFile, buffer, buffer_size)) > 0)
+    {
+      n_read = write(newFile, buffer, buffer_size);
+    }
+
+    close(newFile); close(oldFile);
+
+    chdir("../../..");
   }
   remove(fileName);
 
