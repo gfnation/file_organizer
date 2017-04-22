@@ -7,7 +7,7 @@ easyOrg.o: easyOrg.c
 musicOrg.o: musicOrg.c
 	gcc -c musicOrg.c
 vidOrg.o: vidOrg.c
-	gcc -c vidOrg.o
+	gcc -c vidOrg.c
 token.o: token.c
 	gcc -c token.c
 clean:
