@@ -338,5 +338,5 @@ char* getRemaining(char* original, char* split)
     string[i] = original[length];
     i++;
   }
-  return sting;
+  return string;
 }
