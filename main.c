@@ -323,6 +323,7 @@ char* getTokened(char* original, char token)
   while(original[i] != token)
   {
     returnString[i] = original[i];
+    i++;
   }
   returnString[i] = '\0';
   return returnString;
