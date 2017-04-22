@@ -36,7 +36,7 @@ void vidOrg(char* fileName)
 
 
   //If the file starts with 19 or 20 assume that it is a movie
-  if(strcmp(fileCent, CENT2)==0 || strcmp(fileCent, CENT1))
+  if(strcmp(fileCent, CENT2)==0 || strcmp(fileCent, CENT1) == 0)
   {
     //get the movie year and movie name
     char* year = getTokened(fileName, '-');
