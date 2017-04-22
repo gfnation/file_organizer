@@ -169,7 +169,6 @@ void vidOrg(char* fileName)
 
     //Move into movie directory
     chdir("./movies"); DIR* dir = opendir(".");
-    printf("%s\n", "working in videos" );
     //Turn movie year into a folder
     char* yearDir = malloc((sizeof(char) * strlen(year))+ 2);
     strcpy(yearDir, "./"); strcat(yearDir, year);
@@ -389,25 +388,21 @@ void  easyOrg(char *fileName, char* fileExt)
   if(strcmp(fileExt, PNG) ==0 || strcmp(fileExt, JPEG) ==0)
   {
     chdir("./pictures");
-    printf("%s\n","Working in Pictures now");
   }
   else if (strcmp(fileExt, DOC) ==0 || strcmp(fileExt, TEXT) ==0)
   {
     chdir("./documents");
 
-    printf("%s\n","Working in Documents now");
   }
   else
   {
 
-    printf("%s\n","Working in other now");
     chdir("./other");
   }
 
   int buf_size = statbuf.st_size;
   char buffer[buf_size];
 
-  printf("%s\n", fileName);
 
   if((nfile = open(fileName, O_CREAT | O_WRONLY, 0644)) ==-1)
   {
