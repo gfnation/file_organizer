@@ -144,7 +144,7 @@ void musicOrg(char* fileName)
   char* artRemaining = getRemaining(fileName, artist);
   char* album = getTokened(artRemaining, '-');
   char* albRemaining = getRemaining(artRemaining, album);
-  printf("%s\n", artist, album, albRemaining);
+  printf("%s %s %s\n", artist, album, albRemaining);
 
   int oldFile;
   if((oldFile = open(fileName, O_RDONLY)) == -1)
