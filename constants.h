@@ -1,0 +1,8 @@
+#define VIDEO ".mkv"
+#define MUSIC ".mp3"
+#define DOC ".docx"
+#define TEXT ".txt"
+#define JPEG ".jpg"
+#define PNG ".png"
+#define CENT1 "19"
+#define CENT2 "20"
