@@ -21,6 +21,9 @@ int ignore(char* name);
 void musicOrg(char* fileName);
 void vidOrg(char* fileName);
 
+char* getTokened(char* original, char token);
+char* getRemaining(char* original, char* split);
+
 int main(int argc, char* argv[])
 {
 
@@ -135,9 +138,12 @@ void musicOrg(char* fileName)
   strcpy(throwAway, fileName);
   printf("%s %s\n", throwAway, fileName);
 
+//Make own tokenizer
+
   char* nextTok;
-  nextTok =strtok(throwAway, "-");
-  printf("%s %s\n", nextTok,throwAway );
+  nextTok = getTokened(fileName, '-');
+  char* remaining = getRemaining(fileName, nextTok);
+  printf("%s %s\n", nextTok,remaining );
   //char* album = strtok(NULL, "-");
   //char* song = strtok(NULL, "-");
 
@@ -181,7 +187,6 @@ void musicOrg(char* fileName)
     chdir(nextTok);
   }
 
-  nextTok = strtok(NULL, "-");
   //Check for album
   struct dirent *alb_pt;
   found =1;
@@ -201,7 +206,6 @@ void musicOrg(char* fileName)
     chdir(nextTok);
   }
 
-  nextTok = strtok(NULL,"-");
   //Now that we are in album create final file
   int newFile;
   //Create a new name for the song
@@ -311,3 +315,28 @@ void  easyOrg(char *fileName, char* fileExt)
       return 0;
     }
   }
+
+char* getTokened(char* original, char token)
+{
+  char* returnString = malloc(strlen(original) * sizeof(char));
+  int i=0;
+  while(original[i] != token)
+  {
+    returnString[i] = original[i];
+  }
+  returnString[i] = '\0';
+  return returnString;
+}
+
+char* getRemaining(char* original, char* split)
+{
+  char* string = malloc(strlen(original) * sizeof(char));
+  int length = strlen(split);
+  int i=0;
+  for(;length < strlen(original); length++)
+  {
+    string[i] = original[length];
+    i++;
+  }
+  return sting;
+}
