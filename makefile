@@ -1,5 +1,5 @@
-organizer: main.o easyOrg.o musicOrg.o vidOrg.o
-	gcc main.o easyOrg.o musicOrg.o vidOrg.o -o organizer
+organizer: main.o easyOrg.o musicOrg.o vidOrg.o token.o
+	gcc main.o easyOrg.o musicOrg.o vidOrg.o token.o -o organizer
 main.o: main.c
 	gcc -c main.c
 easyOrg.o: easyOrg.c
